@@ -29,6 +29,7 @@ dev_dependencies:
   json_serializable: ^6.6.2
   build_runner: ^2.3.3
   injectable_generator: ^2.1.5
+  mocktail: ^0.3.0
 
 flutter:
 
