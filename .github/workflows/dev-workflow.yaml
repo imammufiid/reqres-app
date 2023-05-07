@@ -15,7 +15,7 @@ jobs:
           java-version: 11
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: 3.0.1
+          flutter-version: 2.17.1
       - run: flutter pub get
       - run: flutter format --set-exit-if-changed .
       - run: flutter analyze .
