@@ -3,8 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:reqres_project/domain/domain/usecase/get_user_usecase.dart';
-import 'package:reqres_project/presentation/bloc/user_cubit.dart';
-import 'package:reqres_project/utils/failure_response.dart';
+import 'package:reqres_project/presentation/bloc/user_bloc/user_cubit.dart';
+import 'package:reqres_project/utils/error/failure_response.dart';
 
 import '../../model/domain/user_model_dummy.dart';
 
@@ -40,7 +40,7 @@ testUserCubitTest() {
     },
     act: (bloc) => bloc.getUser(id: 1),
     expect: () =>
-    [UserState.onLoading(), UserState.onSuccess(user: userModelDummy)],
+    [UserState.onLoading(), UserState.onSuccess(user: userModelDummy),],
   );
 
   blocTest<UserCubit, UserState>(

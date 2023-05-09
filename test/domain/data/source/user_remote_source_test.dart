@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:reqres_project/domain/data/source/user_remote_source.dart';
-import 'package:reqres_project/utils/failure_response.dart';
+import 'package:reqres_project/utils/error/failure_response.dart';
 
 import '../../../utils/test_helper.dart';
 
