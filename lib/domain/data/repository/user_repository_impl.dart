@@ -5,7 +5,7 @@ import 'package:reqres_project/domain/data/source/user_remote_source.dart';
 import 'package:reqres_project/domain/domain/model/user_model.dart';
 import 'package:reqres_project/domain/domain/repository/user_repository.dart';
 import 'package:reqres_project/utils/constants.dart';
-import 'package:reqres_project/utils/failure_response.dart';
+import 'package:reqres_project/utils/error/failure_response.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRemoteSource userRemoteSource;
