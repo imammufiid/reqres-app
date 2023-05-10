@@ -7,7 +7,9 @@ import 'package:reqres_project/presentation/ui/profile/widget/field_avatar.dart'
 import 'package:reqres_project/presentation/ui/profile/widget/field_form.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  final int userId;
+
+  const ProfilePage({super.key, required this.userId});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -17,15 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    context.read<UserCubit>().getUser(id: _randomInt());
-  }
-
-  int _randomInt() {
-    final random = Random().nextInt(10);
-    if (random > 0) {
-      return random;
-    }
-    return 1;
+    context.read<UserCubit>().getUser(id: widget.userId);
   }
 
   @override
@@ -43,13 +37,10 @@ class _ProfilePageState extends State<ProfilePage> {
               child: BlocBuilder<UserCubit, UserState>(
                 builder: (context, state) {
                   return state.maybeMap(orElse: () {
-                    return Container(
+                    return const SizedBox(
                       width: 100,
                       height: 100,
-                      decoration: const BoxDecoration(
-                        color: Colors.blue,
-                        shape: BoxShape.circle,
-                      ),
+                      child: Center(child: CircularProgressIndicator()),
                     );
                   }, onSuccess: (data) {
                     return FieldAvatar(avatar: data.user.avatar);

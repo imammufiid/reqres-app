@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class FieldAvatar extends StatelessWidget {
   final String avatar;
+  final double? size;
 
-  const FieldAvatar({Key? key, required this.avatar}) : super(key: key);
+  const FieldAvatar({Key? key, required this.avatar, this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +14,8 @@ class FieldAvatar extends StatelessWidget {
         Radius.circular(12.0),
       ),
       child: CachedNetworkImage(
-        width: 100,
-        height: 100,
+        width: (size == null)? 100 : size,
+        height: (size == null)? 100 : size,
         imageUrl: avatar,
         placeholder: (context, url) =>
             const Center(child: CircularProgressIndicator()),

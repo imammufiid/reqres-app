@@ -21,6 +21,7 @@ class UserRemoteSourceImpl implements UserRemoteSource {
     try {
       final response = await dio.get(
         "${AppConstants.appApi.users}$id",
+        queryParameters: {"delay": 5},
       );
       return UserResponse.fromJson(response.data);
     } catch (e) {
@@ -31,7 +32,10 @@ class UserRemoteSourceImpl implements UserRemoteSource {
   @override
   Future<UsersResponse> getUsers() async {
     try {
-      final response = await dio.get(AppConstants.appApi.users);
+      final response = await dio.get(
+        AppConstants.appApi.users,
+        queryParameters: {"delay": 5},
+      );
       return UsersResponse.fromJson(response.data);
     } catch (e) {
       rethrow;

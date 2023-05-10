@@ -19,9 +19,9 @@ class FieldForm extends StatelessWidget {
         const SizedBox(height: 4,),
         Container(
           height: 42,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: const BorderRadius.all(Radius.circular(4))),
+          decoration: const BoxDecoration(
+              color: Color(0XFFD5F2EA),
+              borderRadius: BorderRadius.all(Radius.circular(4))),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Padding(
