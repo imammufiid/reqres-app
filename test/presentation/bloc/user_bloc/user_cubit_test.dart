@@ -6,7 +6,7 @@ import 'package:reqres_project/domain/domain/usecase/get_user_usecase.dart';
 import 'package:reqres_project/presentation/bloc/user_bloc/user_cubit.dart';
 import 'package:reqres_project/utils/error/failure_response.dart';
 
-import '../../model/domain/user_model_dummy.dart';
+import '../../../model/domain/user_model_dummy.dart';
 
 void main() => testUserCubitTest();
 
