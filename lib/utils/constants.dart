@@ -11,6 +11,7 @@ class ErrorMessageResponse {
   const ErrorMessageResponse();
 
   String get failureGetUser => "Failure getUser Endpoint";
+  String get failureGetUsers => "Failure getUsers Endpoint";
 }
 
 class CachedKey {
@@ -24,5 +25,5 @@ class AppApi {
 
   String get baseUrl => 'https://reqres.in/';
 
-  String get user => 'api/users/';
+  String get users => 'api/users/';
 }

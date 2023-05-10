@@ -6,6 +6,7 @@ import 'package:reqres_project/domain/data/mapper/user_mapper.dart';
 import 'package:reqres_project/domain/data/repository/user_repository_impl.dart';
 import 'package:reqres_project/domain/data/source/user_remote_source.dart';
 import 'package:reqres_project/domain/domain/model/user_model.dart';
+import 'package:reqres_project/domain/domain/model/users_model.dart';
 import 'package:reqres_project/domain/domain/repository/user_repository.dart';
 
 import '../../../model/response/user_response_dto_dummy.dart';
@@ -56,6 +57,35 @@ testUserRepositoryTest() {
     final result = await userRepository.getUser(1);
 
     verify(() => mockUserRemoteSource.getUser(1));
+
+    expect(result, isA<Left>());
+  });
+
+  test('''Success get user from remote source
+    GIVEN UsersResponse from remote source
+    WHEN getUsers method execute
+    THEN return Right<UsersModel>
+  ''', () async {
+    when(() => mockUserRemoteSource.getUsers())
+        .thenAnswer((invocation) => Future.value(usersResponseDummy));
+
+    final result = await userRepository.getUsers();
+    verify(() => mockUserRemoteSource.getUsers());
+
+    expect(result, isA<Right>());
+    expect(result.getOrElse(() => const UsersModel()), isA<UsersModel>());
+  });
+
+  test('''Fail get user from remote source
+    GIVEN throw from RemoteDataSource
+    WHEN getUsers method execute
+    THEN return Left<FailureResponse>
+  ''', () async {
+    when(() => mockUserRemoteSource.getUsers())
+        .thenThrow(DioError(requestOptions: RequestOptions(path: "")));
+
+    final result = await userRepository.getUsers();
+    verify(() => mockUserRemoteSource.getUsers());
 
     expect(result, isA<Left>());
   });
