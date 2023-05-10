@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
 import 'package:reqres_project/core/usecase/no_param.dart';
 import 'package:reqres_project/domain/domain/model/users_model.dart';
 import 'package:reqres_project/domain/domain/usecase/get_users_usecase.dart';
