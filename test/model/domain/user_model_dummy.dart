@@ -4,3 +4,4 @@ import '../response/user_response_dto_dummy.dart';
 
 final UserMapper userMapper = UserMapper();
 final userModelDummy = userMapper.mapUserResponseToModel(userResponseDummy);
+final usersModelDummy = userMapper.mapUsersResponseToModel(usersResponseDummy);
