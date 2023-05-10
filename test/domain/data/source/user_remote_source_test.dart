@@ -59,4 +59,37 @@ testUserRemoteSourceTest() {
 
     expect(() => userRemoteSource.getUser(1), throwsException);
   });
+
+  test('''Success Get User List
+    GIVEN fetch data from API with 200 status code
+    WHEN getUsers method execute
+    THEN return UsersResponse
+  ''', () async {
+    final response = TestHelper.readJson('helper/json/users_response.json');
+    final httpResponse = ResponseBody.fromString(
+      response,
+      HttpStatus.ok,
+      headers: {
+        Headers.contentTypeHeader: [Headers.jsonContentType],
+      },
+    );
+
+    when(() => dioAdapterMock.fetch(any(), any(), any()))
+        .thenAnswer((invocation) async => httpResponse);
+
+    final result = await userRemoteSource.getUsers();
+
+    expect(result.data?.isNotEmpty, true);
+  });
+
+  test('''Fail Get User List
+    GIVEN fetch data from API with 500 status code
+    WHEN getUsers method execute
+    THEN return throwException
+  ''', () async {
+    when(() => dioAdapterMock.fetch(any(), any(), any())).thenThrow(
+        const FailureResponse(errorMessage: 'internal server error'));
+
+    expect(() => userRemoteSource.getUsers(), throwsException);
+  });
 }
